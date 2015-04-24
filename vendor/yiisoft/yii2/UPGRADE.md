@@ -8,6 +8,17 @@ if you want to upgrade from version A to version C and there is
 version B between A and C, you need to following the instructions
 for both A and B.
 
+Upgrade from Yii 2.0.3
+----------------------
+
+* Updated dependency to `cebe/markdown` to version `1.0.x`.
+  If you need stick with 1.0.x, you can specify that in your `composer.json` by
+  adding the following line in the `require` section:
+  
+  ```json
+  "cebe/markdown": "~1.0.0",
+  ```
+
 Upgrade from Yii 2.0.2
 ----------------------
 
@@ -173,7 +184,7 @@ Upgrade from Yii 2.0 Beta
   ];
   ```
 
-  > Note: If you are using the `Advanced Application Template` you should not add this configuration to `common/config`
+  > Note: If you are using the `Advanced Project Template` you should not add this configuration to `common/config`
   or `console/config` because the console application doesn't have to deal with CSRF and uses its own request that
   doesn't have `cookieValidationKey` property.
 

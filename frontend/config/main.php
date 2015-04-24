@@ -12,10 +12,20 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
-        'user' => [
-            'identityClass' => 'common\models\User',
-            'enableAutoLogin' => true,
+/*        'user' => [
+            'identityCookie' => [
+                'name'     => '_frontendIdentity',
+                'path'     => '/',
+                'httpOnly' => true,
+            ],
         ],
+        'session' => [
+            'name' => 'FRONTENDSESSID',
+            'cookieParams' => [
+                'httpOnly' => true,
+                'path'     => '/',
+            ],
+        ],*/
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
@@ -29,5 +39,11 @@ return [
             'errorAction' => 'site/error',
         ],
     ],
+	'modules' => [
+	    'user' => [
+	        // following line will restrict access to admin page
+	        'as frontend' => 'dektrium\user\filters\FrontendFilter',
+	    ],	
+	],
     'params' => $params,
 ];

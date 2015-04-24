@@ -103,13 +103,13 @@ class Response extends \yii\base\Response
     public $format = self::FORMAT_HTML;
     /**
      * @var string the MIME type (e.g. `application/json`) from the request ACCEPT header chosen for this response.
-     * This property is mainly set by [\yii\filters\ContentNegotiator]].
+     * This property is mainly set by [[\yii\filters\ContentNegotiator]].
      */
     public $acceptMimeType;
     /**
      * @var array the parameters (e.g. `['q' => 1, 'version' => '1.0']`) associated with the [[acceptMimeType|chosen MIME type]].
      * This is a list of name-value pairs associated with [[acceptMimeType]] from the ACCEPT HTTP header.
-     * This property is mainly set by [\yii\filters\ContentNegotiator]].
+     * This property is mainly set by [[\yii\filters\ContentNegotiator]].
      */
     public $acceptParams = [];
     /**
@@ -252,8 +252,7 @@ class Response extends \yii\base\Response
         if ($this->charset === null) {
             $this->charset = Yii::$app->charset;
         }
-        $formatters = $this->defaultFormatters();
-        $this->formatters = empty($this->formatters) ? $formatters : array_merge($formatters, $this->formatters);
+        $this->formatters = array_merge($this->defaultFormatters(), $this->formatters);
     }
 
     /**
@@ -934,7 +933,9 @@ class Response extends \yii\base\Response
                 throw new InvalidConfigException("The '{$this->format}' response formatter is invalid. It must implement the ResponseFormatterInterface.");
             }
         } elseif ($this->format === self::FORMAT_RAW) {
-            $this->content = $this->data;
+            if ($this->data !== null) {
+                $this->content = $this->data;
+            }
         } else {
             throw new InvalidConfigException("Unsupported response format: {$this->format}");
         }

@@ -12,12 +12,16 @@
         "irc": "irc://irc.freenode.net/yii",
         "source": "https://github.com/yiisoft/yii2"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": "*",
         "yiisoft/yii2-bootstrap": "*",
-        "yiisoft/yii2-swiftmailer": "*"
+        "yiisoft/yii2-swiftmailer": "*",
+        "webvimark/module-user-management": "*",
+        "dektrium/yii2-user": "0.9.*@dev",
+        "almasaeed2010/adminlte": "~2.0",
+        "dmstr/yii2-adminlte-asset": "2.*@beta"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
